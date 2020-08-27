@@ -1,0 +1,1 @@
+memur  3 {'adı'} {'soyadı'} {'no'}
