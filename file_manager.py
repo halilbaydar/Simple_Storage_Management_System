@@ -25,6 +25,7 @@ class file_manager:
                 page=disk.to_get_page()
 
     def to_find_wanted_page(self,page_number):
+        self.page_number=page_number
         disk=disk_manager(self.page_number,self.file_name)
         return disk.to_get_page()
 

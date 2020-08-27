@@ -145,6 +145,8 @@ def searchrecord():
                 aa=False
                 break
         number=number+1
+    def listrecord():
+        print("")
 def main():
     if args.args[0]=="new type":
         createtype()
