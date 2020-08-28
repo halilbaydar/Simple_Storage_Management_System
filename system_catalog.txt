@@ -1,1 +1,1 @@
-memur  3 {'adı'} {'soyadı'} {'no'}
+bölüm  4 {'bölüm adı'} {'taban puan'} {'tavan puan'} {'son giren sıralama'}
