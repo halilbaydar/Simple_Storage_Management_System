@@ -145,8 +145,36 @@ def searchrecord():
                 aa=False
                 break
         number=number+1
-    def listrecord():
-        print("")
+def listrecord():
+    print("The name of type :",end=' ')
+    thenameoftype=input()
+    filename=thenameoftype+'.txt'
+    aa=True
+    number=1
+    print('Primary key',end=' ')
+    d=open('system_catalog.txt','r',encoding='utf-8').readlines()
+    for k in d:
+            if k.split(' ')[0]==thenameoftype:
+                for p in re.findall(".*?{(.*?)}",k):
+                    print(p,end=' ')
+                print('\n')
+    while aa:
+        filem=file_manager(filename)
+        page=[]
+        page=filem.to_find_wanted_page(number)
+        if len(page)==0:
+            aa=False
+        else:
+            for m in range(1,len(page)):
+                    rr=page[m].split(' ')[0]
+                    if rr!='\n':
+                        print(rr,end=' ')
+                    for p in re.findall(".*?{(.*?)}",page[m]):
+                        print(p,end=' ')
+                    if rr!='\n':
+                        print('\n')
+
+        number=number+1
 def main():
     if args.args[0]=="new type":
         createtype()

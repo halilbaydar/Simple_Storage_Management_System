@@ -2,7 +2,7 @@ import re
 import os
 
 class disk_manager:
-    page_size=3
+    page_size=19
     file_name=""
     page_number=0
 
@@ -45,11 +45,14 @@ class disk_manager:
                     line=f.readline()
             size_temp=int(re.findall("\d*",line)[0])
             for k in range(0,size_temp):
-                f.readline()
+                line=f.readline()
+                if line=='\n':
+                    while line=='\n':
+                        line=f.readline()
         page=[]
         ss=f.readline()
         if ss=='\n':
-            while ss=='\n' or ss=="":
+            while ss=='\n':
                 ss=f.readline()
         elif ss=="":
             return []

@@ -17,7 +17,7 @@ class file_manager:
                 disk.to_create_new_page()
                 return ['0\n','\n',disk.page_number]
             size=int(re.findall("\d*",page[0])[0])
-            if size<3:
+            if size<19:
                 page.append(disk.page_number)
                 return page
             else:
