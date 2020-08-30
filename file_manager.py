@@ -41,3 +41,7 @@ class file_manager:
         self.page_number=page_number
         disk=disk_manager(page_number,self.file_name)
         disk.to_write_into_page(self.page_content)
+
+    def delete_Type(self):
+        disk=disk_manager(1,self.file_name)
+        disk.delete_type()

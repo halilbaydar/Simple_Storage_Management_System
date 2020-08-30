@@ -70,3 +70,10 @@ class disk_manager:
         f=open(self.file_name,"a+",encoding='utf-8')
         f.write('0')
         f.write("\n")
+
+    def delete_type(self):
+        for root,directories,files in os.walk('./'):
+                for file in files:
+                    if file==self.file_name:
+                        os.remove(file)
+                break

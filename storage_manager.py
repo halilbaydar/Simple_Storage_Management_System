@@ -15,7 +15,7 @@ def createtype():
     thenameoffields=[]
     thenameoffields.append(str(int(thenumberoffields)))
     for i in range(0,int(thenumberoffields)):
-        print('The name of field',i,":",end=' ')
+        print('The name of field',i+1,":",end=' ')
         x=input()
         thenameoffields.append({x})
     with open("system_catalog.txt","a+",encoding="utf-8") as systemcatalog:
@@ -34,20 +34,17 @@ def createtype():
 def deletetype():
     print("The name of type you want to delete :",end=" ")
     thenameoftype=input()
-    systemcatalogread=open("system_catalog.txt","r")
+    filename=thenameoftype+'.txt'
+    systemcatalogread=open("system_catalog.txt","r",encoding='utf-8')
     lines=systemcatalogread.readlines()
     systemcatalogread.close()
-    systemcatalogread2=open("system_catalog.txt","w")
+    systemcatalogread2=open("system_catalog.txt","w",encoding='utf-8')
 
+    myfile=file_manager(filename)
+    myfile.delete_Type()
     for line in lines:
         if line.split(' ')[0]!=thenameoftype:
             systemcatalogread2.write(line)
-        else:
-            for root,directories,files in os.walk('./'):
-                for file in files:
-                    if file.split('.')[0]==thenameoftype:
-                        os.remove(file)
-                break
     systemcatalogread2.close()
     return
 
@@ -74,6 +71,8 @@ def createrecord():
                      if i!='\n':
                             print(i,':',end='')
                             temp=input()
+                            if temp=="":
+                                temp='-1'
                             fieldvalues.append(str(temp))
     instanceofrecord=""
     instanceofrecord=instanceofrecord+keyofrecord
