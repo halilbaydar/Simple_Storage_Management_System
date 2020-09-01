@@ -2,7 +2,7 @@ import re
 import os
 
 class disk_manager:
-    page_size=19
+    page_size=17
     file_name=""
     page_number=0
 

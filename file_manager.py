@@ -17,7 +17,7 @@ class file_manager:
                 disk.to_create_new_page()
                 return ['0\n','\n',disk.page_number]
             size=int(re.findall("\d*",page[0])[0])
-            if size<19:
+            if size<17:
                 page.append(disk.page_number)
                 return page
             else:
@@ -28,13 +28,6 @@ class file_manager:
         self.page_number=page_number
         disk=disk_manager(self.page_number,self.file_name)
         return disk.to_get_page()
-
-    def to_delete_record(self,page_number):
-        self.page_number=page_number
-        disk=disk_manager(self.page_number,self.file_name)
-        page=[]
-        page=disk.to_get_page()
-        return page
 
     def to_write_into_file_in_proper_page(self,page_content,page_number):
         self.page_content=page_content

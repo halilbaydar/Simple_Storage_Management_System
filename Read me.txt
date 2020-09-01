@@ -1,0 +1,9 @@
+Lenguage used in programming is Python 3.8
+To create new type this command is used => python .\storage_manager.py "new type"
+To delet type this command is used => python .\storage_manager.py "delete type"
+To list all types this command is used => python .\storage_manager.py "list all types"
+To create record this command is used => python .\storage_manager.py "create record"
+To delete record this command is used => python .\storage_manager.py "delete record"
+To search record this command is used => python .\storage_manager.py "search record"
+To list all same type records this command is used => python .\storage_manager.py "list all records"
+

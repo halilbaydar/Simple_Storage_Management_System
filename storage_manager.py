@@ -106,7 +106,7 @@ def deleterecord():
     while run:
         filem=file_manager(filename)
         page=[]
-        page=filem.to_delete_record(aa)
+        page=filem.to_find_wanted_page(aa)
         for i in range(1,len(page)):
             if  page[i].split(' ')[0]==keyofrecord:
                 page[0]=str(int(re.findall("\d*",page[0])[0])-1)+'\n'
@@ -129,18 +129,20 @@ def searchrecord():
         page=filem.to_find_wanted_page(number)
         if len(page)==0:
             print("Not Found")
-        for line in page:
+            return
+        for line in page[1:]:
             if line.split(' ')[0]==keyofrecord:
-                print('Primary key',end=' ')
+                print('Primary key :',end=' ')
+                print(line.split(' ')[0])
                 d=open('system_catalog.txt','r',encoding='utf-8').readlines()
                 for k in d:
                     if k.split(' ')[0]==thenameoftype:
-                        for p in re.findall(".*?{(.*?)}",k):
-                            print(p,end=' ')
+                        temp1=re.findall(".*?{(.*?)}",line)
+                        temp=re.findall(".*?{(.*?)}",k)
+                        for p in range(len(temp)):
+                            print(temp[p]," : ",end=' ')
+                            print(temp1[p])
                         print('\n')
-                        print(line.split(' ')[0],end=' ')
-                        for p in re.findall(".*?{(.*?)}",line):
-                            print(p,end=' ')
                 aa=False
                 break
         number=number+1
@@ -187,7 +189,7 @@ def main():
         deleterecord()
     elif args.args[0]=="search record":
         searchrecord()
-    elif args.args[0]=="list all record":
+    elif args.args[0]=="list all records":
         listrecord()
     else:
         print("please enter what you do ")
